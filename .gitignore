@@ -1,7 +1,7 @@
 # node
 node_modules
 
-#directories
+# directories
 .vscode
 .DS_Store
 
