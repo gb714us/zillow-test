@@ -5,16 +5,28 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/node/app.js"
+    "server": "nodemon --harmony --debug server/node/app.js",
+    "start": "npm run server & npm run dev",
+    "dev": "webpack -d --watch",
+    "build": "webpack -p"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google/maps": "^0.3.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "nodemon": "^1.11.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2"
   }
