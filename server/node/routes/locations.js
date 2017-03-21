@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const ajaxOnly = require('../middleware/ajax-only');
 const MapService = require('../google-maps/mapService');
+const RetslyApiService = require('../retsly-integration/retsly');
 
-const service = new MapService();
-
-router.use(ajaxOnly);
+const mapService = new MapService();
+const retslyApiService = new RetslyApiService();
 
 // router.get('/:query', (req, res) => {
 //     res.json({ search: req.params['id'] });
@@ -13,10 +12,27 @@ router.use(ajaxOnly);
 router.get('/coordinates', (req, res) => {
     console.log('in coordinates');
 
-    service.getGeolocation(req.query.query)
+    mapService.getGeolocation(req.query.query)
         .then(x => {
             console.log(x);
             res.json({result: true, data: x});
+        })
+        .catch((e) => {
+            res.json({message: e.message, result: false});
+        });
+});
+
+router.get('/details', (req, res) => {
+    console.log('in details');
+    retslyApiService.listings(req.query)
+        .then(x => {
+            console.log(x);
+            if (!x.success || !x.bundle.length > 0)
+            {
+                throw new Error("Unable to find results for the given location.")
+            }
+            res.json({result: true, data: x.bundle}); 
+                       
         })
         .catch((e) => {
             res.json({message: e.message, result: false});

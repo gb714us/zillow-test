@@ -1,0 +1,53 @@
+const fetch = require('isomorphic-fetch');
+const urlBuilder = require('../utils/url-builder');
+
+const connectionOptions = {
+    url: 'https://rets.io/api/v1/'
+}
+
+const defaults = {
+    vendor: 'test',
+    accessToken: '6baca547742c6f96a6ff71b138424f21'
+}
+
+
+class RetslyTestApi {
+    
+    constructor(token = defaults.accessToken)
+    {
+        this.apiToken = token;
+        this.vendor = defaults.vendor;
+    }
+
+    buildUrl (service, query)
+    {
+        return urlBuilder(connectionOptions.url + '/' + this.vendor + '/' + service, query);
+    }
+
+    listings(query)
+    {
+        let {address} = query;
+        limit = limit || 10;
+
+        let q = { 
+            address,
+            limit
+        };
+
+        return this.request('listings', q);
+    }
+
+    request(service, query = {})
+    {
+        query.access_token = this.apiToken;
+        return fetch(this.buildUrl(service, query), { 
+
+        })
+        .then(res => {
+            return res.json();
+        });
+    }
+    
+}
+
+module.exports = RetslyTestApi

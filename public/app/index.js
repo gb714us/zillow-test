@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 
-import {SearchComponent} from './components/search-component';
+import App from './components/app';
 
-ReactDOM.render(<SearchComponent />, document.getElementById('entryPoint'));
+ReactDOM.render(<App />, document.getElementById('entryPoint'));

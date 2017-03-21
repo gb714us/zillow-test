@@ -1,7 +1,8 @@
 import React from 'react';
 
+const DEFAULT_THROTTLE = 1000;
 
-export class SearchComponent extends React.Component {
+export default class SearchComponent extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this)
@@ -10,13 +11,12 @@ export class SearchComponent extends React.Component {
         };
     }
 
-    throttleInput(currentTimeout){
+    throttleInput(currentTimeout) {
         if (!currentTimeout) return;
         clearTimeout(currentTimeout);
     }
 
-    handleChange(e)
-    {
+    handleChange(e) {
         /*
         wait until the user has typed in and avoid useless calls on api.
 
@@ -28,8 +28,8 @@ export class SearchComponent extends React.Component {
         let currentTimeOut = setTimeout(() => {
             console.log(this.state.value);
             delete this.state.currentTimeOut;
-        }, 500)
-        
+        }, DEFAULT_THROTTLE)
+
         this.setState({
             value: e.target.value,
             currentTimeOut
@@ -38,13 +38,10 @@ export class SearchComponent extends React.Component {
 
     render() {
         return (
-            <div> 
-            <div className='ui input'>
-                <input placeholder='Type in your address' type='text' value={this.state.value} onChange={this.handleChange}/>
-            </div>
-                <p>{this.state.value}</p>
+            <div className="ui icon input">
+                <input placeholder='Type in your address' type='text' value={this.state.value} onChange={this.handleChange} />
+                <i className="search link icon"></i>
             </div>
         )
-
     }
 }

@@ -4,6 +4,8 @@ const searchRouter = require("./routes/search.js");
 const locationsRouter = require("./routes/locations.js");
 const path = require("path");
 const bodyParser = require("body-parser");
+const helmet = require("helmet");
+
 
 
 const app = express();
@@ -13,6 +15,7 @@ let publicRoot = path.resolve(__dirname, '../../public');
 
 //default + middleware
 app.disable('X-Powered-By');
+app.use(helmet());
 app.use(express.static(publicRoot));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
