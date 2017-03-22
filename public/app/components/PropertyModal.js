@@ -26,7 +26,6 @@ export default class PropertyModal extends Component {
                     </div>
                 </div>
             </div>
-
         )
             : null;
     }

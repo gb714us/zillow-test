@@ -25,4 +25,6 @@ app.use('/locations', locationsRouter);
 //index
 app.get('/', (req, res) => res.sendFile('index.html', { root: publicRoot }));
 
-app.listen(8080, (x) => console.log(`Running now on port ${ PORT } `));
+module.exports = function(){
+    app.listen(8080, (x) => console.log(`Running now on port ${ PORT } `))
+}

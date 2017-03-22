@@ -5,6 +5,7 @@ const connectionOptions = {
     url: 'https://rets.io/api/v1/'
 }
 
+//default credentials for test dataset.
 const defaults = {
     vendor: 'test',
     accessToken: '6baca547742c6f96a6ff71b138424f21'
@@ -24,6 +25,7 @@ class RetslyTestApi {
         return urlBuilder(connectionOptions.url + '/' + this.vendor + '/' + service, query);
     }
 
+    //expose the listings integration.
     listings(query)
     {
         let {address, limit} = query;
