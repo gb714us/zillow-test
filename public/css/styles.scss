@@ -1,0 +1,13 @@
+.content{
+    &__body{
+        margin-top: 100px;
+    }   
+}
+
+.nav{
+    &__search{
+        &--wide{
+            width: 500px;
+        }
+    }
+}

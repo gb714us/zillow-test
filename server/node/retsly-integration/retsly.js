@@ -26,8 +26,8 @@ class RetslyTestApi {
 
     listings(query)
     {
-        let {address} = query;
-        limit = limit || 10;
+        let {address, limit} = query;
+        limit = limit || 12;
 
         let q = { 
             address,

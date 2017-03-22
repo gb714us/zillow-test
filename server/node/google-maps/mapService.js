@@ -1,16 +1,13 @@
 const maps = require('@google/maps');
 console.log(process.env.MAPS_API_KEY ? 'Found Maps Key' : 'Unable to find maps key')
 
+//check environment variable
 const client = maps.createClient({
     key : process.env.MAPS_API_KEY,
     Promise: Promise
 })
 
 class MapService {
-    constructor() {
-
-    }
-
     getGeolocation(address) {
         if (!address) {
             return null;
@@ -25,7 +22,6 @@ class MapService {
 
             return res.json.results;
         })
-
     }
 }
 

@@ -1,13 +1,9 @@
-import React from 'react';
-import SearchComponent from './search-component';
+import React, { PropTypes, Component } from 'react'
+import SearchInput from './SearchInput'
 
-
-export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: ''
-        };
+export default class Header extends Component {
+    static propTypes = {
+        requestData: PropTypes.func.isRequired
     }
 
     render() {
@@ -20,9 +16,9 @@ export default class App extends React.Component {
                     <div className='item'>
                         <h3>Zillow Retsly Application</h3>
                     </div>
-                    <div className='right menu'>
+                    <div className='fluid right menu'>
                         <div className="item">
-                            <SearchComponent />
+                            <SearchInput requestData={this.props.requestData} />
                         </div>
                     </div>
                 </div>

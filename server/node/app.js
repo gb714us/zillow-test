@@ -1,12 +1,9 @@
 const express = require('express');
 //Routes
-const searchRouter = require("./routes/search.js");
 const locationsRouter = require("./routes/locations.js");
 const path = require("path");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
-
-
 
 const app = express();
 
@@ -22,9 +19,10 @@ app.use(bodyParser.json());
 
 console.log(publicRoot);
 
-app.use('/search', searchRouter);
+//all routes
 app.use('/locations', locationsRouter);
 
+//index
 app.get('/', (req, res) => res.sendFile('index.html', { root: publicRoot }));
 
 app.listen(8080, (x) => console.log(`Running now on port ${ PORT } `));
