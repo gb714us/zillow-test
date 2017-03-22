@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon --harmony --debug index.js",
-    "start": "npm run server & npm run dev & npm run sass",
-    "start-prod": "npm run server & npm run build & npm run sass",
+    "start": "npm run server & npm run build & npm run sass",
     "dev": "webpack -d --watch",
     "build": "webpack -p",
     "sass": "./node_modules/.bin/node-sass ./public/css/styles.scss ./public/build/styles.css"
